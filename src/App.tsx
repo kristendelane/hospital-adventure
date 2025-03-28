@@ -1,46 +1,23 @@
 import { useState, useEffect } from "react";
-import { story as rawStory } from "./story";
-
-type Scene = {
-  id: string;
-  text: string;
-  choices: {
-    text: string;
-    next: string;
-  }[];
-};
-
-type Story = {
-  [key: string]: Scene;
-};
-
-const story: Story = rawStory;
+import { story, Scene } from "./story";
 
 function App() {
-  const [sceneId, setSceneId] = useState<string>("start");
-  const [currentScene, setCurrentScene] = useState<Scene>(story["start"]);
+  const [sceneId, setSceneId] = useState<string>("pain_management_intro");
+  const [currentScene, setCurrentScene] = useState<Scene>(story["pain_management_intro"]);
 
   useEffect(() => {
-    setCurrentScene(story[sceneId]);
+    // Explicitly tell TypeScript that sceneId is a valid key for 'story'
+    setCurrentScene(story[sceneId as keyof typeof story]);
   }, [sceneId]);
 
   return (
-    <div
-      style={{
-        padding: "2rem",
-        maxWidth: "600px",
-        margin: "0 auto",
-        fontFamily: "sans-serif",
-      }}
-    >
-      <p style={{ fontSize: "1.25rem", marginBottom: "1rem" }}>
-        {currentScene.text}
-      </p>
+    <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto", fontFamily: "sans-serif" }}>
+      <p style={{ fontSize: "1.25rem", marginBottom: "1rem" }}>{currentScene.text}</p>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {currentScene.choices.map((choice, index) => (
           <button
             key={index}
-            onClick={() => setSceneId(choice.next)}  // Corrected here
+            onClick={() => setSceneId(choice.next)}
             style={{
               padding: "0.75rem",
               fontSize: "1rem",
@@ -58,5 +35,4 @@ function App() {
   );
 }
 
-// **This is where the export should go:**
-export default App;  // <-- This line goes at the bottom
+export default App;

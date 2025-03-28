@@ -1,3 +1,18 @@
+export interface Choice {
+    text: string;
+    next: string;
+  }
+  
+  export interface Scene {
+    id: string;
+    text: string;
+    choices: Choice[];
+  }
+  
+  export interface Story {
+    [key: string]: Scene;
+  }
+  
 export const story = {
     // Your previous stories here...
   
