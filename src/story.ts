@@ -82,8 +82,10 @@ export const story = {
     good_ending: {
       id: "good_ending",
       text: "Finally, validated and cared for, you leave wiser, realizing advocating for yourself clearly matters.",
-      choices: [],
-    },
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+          },
   
     advocate_success: {
       id: "advocate_success",
@@ -98,31 +100,67 @@ export const story = {
     medical_record: {
       id: "medical_record",
       text: "The nurse ignores your sarcasm, leaving you stranded. You eventually leave untreated, frustrated and still in pain.",
-      choices: [],
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+      
     },
   
     meditation_sarcastic: {
       id: "meditation_sarcastic",
       text: "The doctor labels you 'difficult' and leaves. No help given. Lesson learned about ER diplomacy.",
-      choices: [],
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+      
     },
   
     waiting_sob: {
       id: "waiting_sob",
       text: "You give up, leave untreated, and cry quietly at home, vowing better advocacy next time.",
-      choices: [],
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+      
     },
   
     advocate_fail: {
       id: "advocate_fail",
       text: "The advocate never returns. You leave the ER frustrated, but with newfound determination to self-advocate next time.",
-      choices: [],
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+      
     },
   
     useless_tylenol: {
       id: "useless_tylenol",
       text: "You're labeled as 'drug-seeking' despite not asking for drugs. You leave untreated, angry but determined to report your experience.",
-      choices: [],
+      choices: [
+        { text: "Get resources and restart 🔄", next: "ending_scene" },
+      ],
+      
     },
+
+    ending_scene: {
+      id: "ending_scene",
+      text: `
+      You've reached the end of this path. Don't despair! Navigating chronic illness can feel like you're stuck in an endless maze, but here's some helpful info to guide you:
+
+      🗒️ **Practical Advice:**
+      - Document all your medical encounters.
+      - Always request medical records after ER visits.
+      - Never hesitate to seek second opinions or patient advocacy services.
+
+      🎙️ **Recommended Resources:**
+      - **TikTok:** Dr. Erin Nance's "Little Miss Diagnosis"
+      - **Podcast:** "An Arm and a Leg" for financial and healthcare advocacy
+      - **Facebook:** Groups for gastroparesis, tube feeding, and chronic invisible illness
+
+      Want to try again or explore a different path?
+      `,
+      choices: [
+        { text: "🔄 Start Over", next: "pain_management_intro" },
+      ],
+    }
   };
-  
