@@ -1,124 +1,113 @@
 export const story = {
-    start: {
-      id: "start",
-      text: "You wake up in a hospital room. A nurse tells you, 'You’re anxious and we’re discharging you now.' You feel confused. What do you do?",
+    // Your previous stories here...
+  
+    pain_management_intro: {
+      id: "pain_management_intro",
+      text: "You're curled up in an uncomfortable plastic chair at the ER, your abdomen stabbing you repeatedly from the inside out. The pain feels like a thousand tiny ninjas wielding samurai swords inside your stomach. After three hours of waiting, a bored triage nurse finally calls your name with the enthusiasm typically reserved for doing taxes.",
       choices: [
-        { text: "Ask to speak to the attending physician", next: "attending" },
-        { text: "Insist that you're in severe pain and can't leave yet", next: "refuse_discharge" },
-        { text: "Ask for a psych consult to prove you’re not crazy", next: "psych_consult" },
+        { text: "Politely explain your chronic condition and severe pain", next: "polite_explain" },
+        { text: "Sarcastically offer to trade your left kidney for immediate attention", next: "kidney_trade" },
       ],
     },
-    attending: {
-      id: "attending",
-      text: "The attending physician finally shows up, looking rushed. You explain your situation, and they seem dismissive. They mention that they’ll 'check on you later'.",
+  
+    polite_explain: {
+      id: "polite_explain",
+      text: "The nurse types slowly, painfully slowly, and mumbles without making eye contact: 'Rate your pain from one to ten.' You whisper-shout, 'Eleven!' She sighs, unmoved.",
       choices: [
-        { text: "Request a second opinion from another physician", next: "second_opinion" },
-        { text: "Write down what happened and wait for their return", next: "waiting" },
+        { text: "Quietly insist on seeing the attending physician", next: "attending_physician" },
+        { text: "Suggest she read your 200-page medical record", next: "medical_record" },
       ],
     },
-    second_opinion: {
-      id: "second_opinion",
-      text: "The second opinion you requested arrives, but they seem just as rushed. They tell you that they can't do much unless you have specific tests. Do you push for those tests?",
+  
+    kidney_trade: {
+      id: "kidney_trade",
+      text: "You sarcastically offer your left kidney. The nurse looks confused and writes something down—probably 'Patient combative'—and sends you back to the waiting room.",
       choices: [
-        { text: "Push for immediate tests to rule out serious conditions", next: "tests" },
-        { text: "Agree to wait for further review", next: "waiting" },
+        { text: "Retreat to waiting room and sob quietly", next: "waiting_sob" },
+        { text: "Politely request a patient advocate", next: "patient_advocate" },
       ],
     },
-    tests: {
-      id: "tests",
-      text: "The tests are completed and they reveal an underlying medical issue. You're relieved to know it's not 'just anxiety.' The attending agrees to treat your condition.",
+  
+    attending_physician: {
+      id: "attending_physician",
+      text: "The attending breezes by, suggesting mindfulness or meditation. You're momentarily speechless, counting backwards from ten.",
       choices: [
-        { text: "Follow through with the treatment plan", next: "treatment" },
-        { text: "Request a third opinion from another doctor", next: "third_opinion" },
+        { text: "Patiently explain meditation doesn't help", next: "meditation_reply" },
+        { text: "Suggest the doctor meditate on better solutions", next: "meditation_sarcastic" },
       ],
     },
-    third_opinion: {
-      id: "third_opinion",
-      text: "The third opinion arrives and recommends additional tests. You feel overwhelmed by the uncertainty and wait to see what they recommend next.",
+  
+    patient_advocate: {
+      id: "patient_advocate",
+      text: "The advocate listens sympathetically, promising help. You feel momentarily hopeful but skeptical.",
       choices: [
-        { text: "Ask to speak with a patient advocate", next: "advocate" },
-        { text: "Return to waiting for answers", next: "waiting" },
+        { text: "Accept promises gratefully", next: "advocate_success" },
+        { text: "Cynically thank her for nothing", next: "advocate_fail" },
       ],
     },
-    refuse_discharge: {
-      id: "refuse_discharge",
-      text: "You refuse to leave, explaining your symptoms in more detail. The nurse becomes frustrated but tells you that you’ll be marked as 'AMA' (Against Medical Advice).",
+  
+    meditation_reply: {
+      id: "meditation_reply",
+      text: "Frustrated, the doctor orders Tylenol. You know this won't help.",
       choices: [
-        { text: "Insist on staying until a doctor agrees to treat you", next: "doctor_agreement" },
-        { text: "Leave against medical advice, but feel unsure about your decision", next: "waiting" },
+        { text: "Request a consult from pain management", next: "pain_consult" },
+        { text: "Inform them loudly that Tylenol is useless", next: "useless_tylenol" },
       ],
     },
-    doctor_agreement: {
-      id: "doctor_agreement",
-      text: "After further discussion, a doctor agrees that you're not fit to leave. You’re admitted for treatment. The doctor explains the importance of ensuring your health before discharge.",
+  
+    pain_consult: {
+      id: "pain_consult",
+      text: "The pain specialist genuinely listens and offers compassionate care and actual treatments. You're amazed and relieved.",
       choices: [
-        { text: "Accept treatment and feel relieved", next: "treatment" },
-        { text: "Request to leave and seek help elsewhere", next: "find_help" },
+        { text: "Thank them profusely", next: "good_ending" },
+        { text: "Invite them to your imaginary TED Talk", next: "good_ending" },
       ],
     },
-    psych_consult: {
-      id: "psych_consult",
-      text: "The psych consult arrives and reassures you that there’s nothing mentally wrong, but they tell you that they can’t intervene without a formal referral. You feel dismissed.",
+  
+    good_ending: {
+      id: "good_ending",
+      text: "Finally, validated and cared for, you leave wiser, realizing advocating for yourself clearly matters.",
+      choices: [],
+    },
+  
+    advocate_success: {
+      id: "advocate_success",
+      text: "Surprisingly, the advocate brings in an attentive doctor who provides immediate help. Miracle achieved.",
       choices: [
-        { text: "Request your medical records and leave", next: "records" },
-        { text: "Post your situation online for support", next: "social" },
+        { text: "Express gratitude", next: "good_ending" },
+        { text: "Ask if this is a hidden-camera show", next: "good_ending" },
       ],
     },
-    social: {
-      id: "social",
-      text: "You post your story online, hoping someone will listen. The support you get from others helps push the hospital staff to act faster.",
-      choices: [
-        { text: "Follow up with the people who offered support", next: "follow_up" },
-        { text: "Return to your room and wait for them to act", next: "waiting" },
-      ],
+  
+    // Other endings (simplified for now)
+    medical_record: {
+      id: "medical_record",
+      text: "The nurse ignores your sarcasm, leaving you stranded. You eventually leave untreated, frustrated and still in pain.",
+      choices: [],
     },
-    waiting: {
-      id: "waiting",
-      text: "Hours pass and nothing seems to change. You're growing more anxious. Time feels slow as you wait for any resolution.",
-      choices: [
-        { text: "Keep waiting for something to happen", next: "waiting" },
-        { text: "Ask for a second opinion or a new plan", next: "second_opinion" },
-      ],
+  
+    meditation_sarcastic: {
+      id: "meditation_sarcastic",
+      text: "The doctor labels you 'difficult' and leaves. No help given. Lesson learned about ER diplomacy.",
+      choices: [],
     },
-    advocate: {
-      id: "advocate",
-      text: "You speak with the patient advocate, explaining your situation. They tell you they’ll look into your case. It feels like a small victory, but you're still not sure what's next.",
-      choices: [
-        { text: "Wait for them to escalate the situation", next: "waiting" },
-        { text: "Look for another solution on your own", next: "find_help" },
-      ],
+  
+    waiting_sob: {
+      id: "waiting_sob",
+      text: "You give up, leave untreated, and cry quietly at home, vowing better advocacy next time.",
+      choices: [],
     },
-    find_help: {
-      id: "find_help",
-      text: "You try to find someone who will listen, but the hospital bureaucracy keeps getting in your way. You're feeling more isolated, but you haven't given up yet.",
-      choices: [
-        { text: "Return to your room and keep asking questions", next: "waiting" },
-        { text: "Look for another department to help you", next: "department_assist" },
-      ],
+  
+    advocate_fail: {
+      id: "advocate_fail",
+      text: "The advocate never returns. You leave the ER frustrated, but with newfound determination to self-advocate next time.",
+      choices: [],
     },
-    department_assist: {
-      id: "department_assist",
-      text: "You find a department that listens and agrees to help you get the right care. You feel like you're finally being heard.",
-      choices: [
-        { text: "Wait for their update", next: "waiting" },
-        { text: "Request a follow-up to ensure they don’t forget", next: "follow_up" },
-      ],
-    },
-    follow_up: {
-      id: "follow_up",
-      text: "You follow up with the department, and they confirm everything is in order. You’re relieved to know you’ve got the support you need.",
-      choices: [
-        { text: "Follow through with the care plan", next: "treatment" },
-        { text: "Request a second opinion to be sure", next: "second_opinion" },
-      ],
-    },
-    treatment: {
-      id: "treatment",
-      text: "You accept the treatment plan, and you start seeing improvements. You’re finally feeling better, and the hospital experience has taught you the importance of being proactive in your care.",
-      choices: [
-        { text: "Reflect on your experience and feel relieved", next: "end" },
-        { text: "Ask for more information about your diagnosis", next: "records" },
-      ],
+  
+    useless_tylenol: {
+      id: "useless_tylenol",
+      text: "You're labeled as 'drug-seeking' despite not asking for drugs. You leave untreated, angry but determined to report your experience.",
+      choices: [],
     },
   };
   
